@@ -141,3 +141,45 @@ updated_at:datetime
 
 belongs_to :user
 ```
+### :rocket: Scenario 5: Reddit
+Reddit. Well, maybe a very junior version of it called micro-reddit. In this project, you’ll build the data structures necessary to support link submissions and commenting. 
+
+**User**
+
+```ruby=2.6.6
+id:integer
+username:string [unique, 4-12 chars, present]
+email:string [unique, present]
+password:string [6-16 chars, present]
+created_at:datetime
+updated_at:datetime
+
+
+has_many :posts
+has_many :comments
+```
+
+**Post**
+
+```ruby=2.6.6
+id:integer
+title:string [unique, 4-18 chars, present]
+description:text [present]
+
+belongs_to :user
+has_many :comments
+```
+
+**Comment**
+
+```ruby=2.6.6
+id:integer
+title:string [unique, 4-20 chars, present]
+description:text [present]
+created_at:datetime
+updated_at:datetime
+
+
+belongs_to :user
+belongs_to :post
+``` 
